@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html {{ htmlAttributes | safe }}>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% if title %}{{ title | safe }}{% else %}{% endif %}</title>
+    {% if meta %}{{ meta | safe }}{% endif %}
+    {% for cssFile in manifest["css"] %}
+    <link rel="stylesheet" type="text/css" href="{{ root }}{{ cssFile }}" />
+    {% endfor %}
+    <style id="nprogress-style">
+      #nprogress {
+        display: none;
+      }
+    </style>
+    <link rel="stylesheet/less" type="text/css" href="{{ root }}color.less" />
+    <script src="https://polyfill.alicdn.com/polyfill.min.js?features=default,es2015,matchMedia,Intl"></script>
+    <script>
+      (function() {
+        function isLocalStorageNameSupported() {
+          var testKey = 'test';
+          var storage = window.localStorage;
+          try {
+            storage.setItem(testKey, '1');
+            storage.removeItem(testKey);
+            return true;
+          } catch (error) {
+            return false;
+          }
+        }
+        // 优先级提高到所有静态资源的前面，语言不对，加载其他静态资源没意义
+        var pathname = location.pathname;
+        function getLocalizedPathname(path, zhCN) {
+          const pathname = path.startsWith('/') ? path : `/${path}`;
+          if (pathname === '/') {
+            return '/index';
+          }
+          if (pathname.endsWith('/')) {
+            return pathname.replace(/\/$/, '/');
+          }
+          return `${pathname}`;
+        }
+
+        document.documentElement.className += 'zh-cn';
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="react-content">
+      {{ content | safe }}
+    </div>
+    {% for jsFile in manifest["js"] %}<script src="{{ root }}{{ jsFile }}"></script>
+    {% endfor %}
+  </body>
+</html>

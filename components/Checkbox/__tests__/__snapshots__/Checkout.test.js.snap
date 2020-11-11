@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox disabled and indeterminate 1`] = `
+<label
+  class="Checkbox  ant-checkbox-wrapper ant-checkbox-wrapper-disabled"
+>
+  <span
+    class="ant-checkbox ant-checkbox-indeterminate ant-checkbox-disabled"
+  >
+    <input
+      class="ant-checkbox-input"
+      disabled=""
+      type="checkbox"
+      value=""
+    />
+    <span
+      class="ant-checkbox-inner"
+    />
+  </span>
+</label>
+`;
+
+exports[`Checkbox render basically 1`] = `
+<label
+  class="Checkbox  ant-checkbox-wrapper ant-checkbox-wrapper-checked"
+>
+  <span
+    class="ant-checkbox ant-checkbox-checked"
+  >
+    <input
+      checked=""
+      class="ant-checkbox-input"
+      type="checkbox"
+    />
+    <span
+      class="ant-checkbox-inner"
+    />
+  </span>
+  <span>
+    checked
+  </span>
+</label>
+`;
