@@ -4,7 +4,9 @@
 
 基于Bisheng创建
 
-运行指令npm start即可开启本地环境
+详情参考 https://github.com/benjycui/bisheng
+
+运行指令npm start即可开启本地环境，查看组件库展示网站
 
 ## 单元测试
 
